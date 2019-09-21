@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="root">Hello Budi!</div>
+    <button onclick="gantiText()">Click untuk memanggil javascript</button>
+</body>
+
+<script language="JavaScript">
+    //ini adalah komentar
+    //function
+    //variable//
+    //for loop/
+    //array
+    //conditional
+    //alert(document.getElementById("root").innerText)
+
+    var arr =["Andi", "Budi", "Caca", "Dedi", "Eka", "Fajrin"]
+    for (var i=0; i<arr.length; i++) {
+        if (i < 3) {
+            document.getElementById("root").innerHTML +="<li>Hello " +  arr[i] + "</li>"
+        } else {
+            document.getElementById("root").innerHTML +="<li>Hi " +  arr[i] + "</li>"
+        }
+    }
+
+    function gantiText() {
+        document.getElementById("root").innerText = "Hello Sudah diganti sama function loh"
+    }
+
+</script>
+</html>
