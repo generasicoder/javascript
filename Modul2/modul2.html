@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="root">Hello Budi!</div>
+    <button onclick="gantiText()">Click untuk memanggil javascript</button>
+</body>
+
+<script language="JavaScript">
+    //async await promise
+
+    function satu() {
+        return 1
+    }
+
+    function dua() {
+        return 2
+    }
+
+    function tiga() {
+        return 3
+    }
+
+    async function getData(x, waitTime) {
+        promise = new Promise(((resolve, reject) => {
+            setTimeout(function() {
+                resolve(x)
+            }, waitTime)
+        }))
+
+        return promise
+    }
+
+    async function asyncSatu() {
+        return getData(1, 1000) //tunggu 3000ms sebelum balikin nilai 1
+    }
+
+    async function asyncDua() {
+        return getData(2, 1000) //tunggu 2000ms sebelum balikin nilai 2
+    }
+
+    async function asyncTiga() {
+        return getData(3, 1000) //tunggu 1000ms sebelum balikin nilai 3
+    }
+
+    async function gantiText() {
+        /*document.getElementById("root").innerText = satu() //langsung cetak 1
+        document.getElementById("root").innerText = dua() //langsung cetak2
+        document.getElementById("root").innerText = tiga() //langsung cetak 3*/
+
+        /*document.getElementById("root").innerText = await asyncSatu() //tunggu 3000ms sebelum cetak nilai 1
+        document.getElementById("root").innerText = await asyncDua() //tunggu 2000ms sebelum cetak nilai 2
+        document.getElementById("root").innerText = await asyncTiga() //tunggu 1000ms sebelum cetak nilai 3 => sum(1000, 2000, 3000) => 8000ms
+*/
+
+        asyncSatu().then((x) => {document.getElementById("root").innerText = x}) //tunggu 3000ms sebelum cetak nilai 1
+        asyncDua().then((x) => {document.getElementById("root").innerText = x}) //tunggu 2000ms sebelum cetak nilai 2
+        asyncTiga().then((x) => {document.getElementById("root").innerText = x}) //tunggu 1000ms sebelum cetak nilai 3 =>  max(1000, 2000, 3000) => 3000ms
+    }
+
+</script>
+</html>
